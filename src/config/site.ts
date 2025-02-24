@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Leon",
   domain: "",
-  url: "https://https://leon211.casino/",
-  ogImage: "https://https://leon211.casino//images/og-image.jpg",
+  url: "https://Leon-platform.com",
+  ogImage: "https://Leon-platform.com/images/og-image.jpg",
   description:
     "Premium online casino with slots, live games, and 24/7 support. Get a 100% welcome bonus up to $500 and 200 free spins!",
   keywords: [

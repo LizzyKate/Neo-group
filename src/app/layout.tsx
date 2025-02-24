@@ -12,7 +12,7 @@ const inter = Inter({
 
 // Define metadata
 export const metadata: Metadata = {
-  metadataBase: new URL("https://https://leon211.casino/"),
+  metadataBase: new URL("https://leon211.casino/"),
   title: {
     template: "%s | Leon - Premium Gaming Platform",
     default: "Leon - Premium Gaming Platform",
@@ -63,10 +63,10 @@ export const metadata: Metadata = {
     creator: "@LeonOfficial",
   },
   alternates: {
-    canonical: "https://https://leon211.casino/",
+    canonical: "https://leon211.casino/",
     languages: {
-      "en-US": "https://https://leon211.casino/",
-      "es-ES": "https://https://leon211.casino//es",
+      "en-US": "https://leon211.casino/",
+      "es-ES": "https://leon211.casino//es",
     },
   },
   robots: {
@@ -82,6 +82,11 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
+  other: {
+    "link:preconnect:fonts.googleapis.com": "https://fonts.googleapis.com",
+    "link:preconnect:fonts.gstatic.com":
+      "https://fonts.gstatic.com;crossOrigin=anonymous",
+  },
 };
 
 // Define viewport settings for responsive design
@@ -95,6 +100,26 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+function JsonLd() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Leon",
+          url: "https://leon211.casino/",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://leon211.casino/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      }}
+    />
+  );
+}
 export default function RootLayout({
   children,
 }: {
@@ -102,41 +127,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr" className={inter.variable}>
-      <head>
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Favicon and app icons */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Structured data for rich results */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Leon",
-              url: "https://https://leon211.casino/",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://https://leon211.casino//search?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
-        />
-      </head>
       <body className={inter.className}>
         <ThemeProvider>{children}</ThemeProvider>
+        <JsonLd />
       </body>
     </html>
   );
