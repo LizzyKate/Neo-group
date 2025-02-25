@@ -18,6 +18,7 @@ const LandingPage: React.FC = () => {
   const { darkMode } = useTheme();
   const [processVisible, setProcessVisible] = useState(false);
   const [cardsVisible, setCardsVisible] = useState(false);
+  const [bgLoaded, setBgLoaded] = useState(false);
 
   const processRef = useRef(null);
   const cardsRef = useRef(null);
@@ -94,6 +95,18 @@ const LandingPage: React.FC = () => {
     },
   ];
 
+  // Preload background image
+  useEffect(() => {
+    const img = new Image();
+    img.src = "../../assets/images/bg.png";
+    img.onload = () => {
+      setBgLoaded(true);
+    };
+    img.onerror = () => {
+      setBgLoaded(true); // Show anyway to avoid a blank screen
+    };
+  }, []);
+
   // Intersection observer for animations
   useEffect(() => {
     const processObserver = new IntersectionObserver(
@@ -150,11 +163,19 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="relative overflow-hidden min-h-screen">
+      {!bgLoaded && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900">
+          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
       <div
-        className="fixed inset-0 w-full h-full bg-cover bg-center z-0 __bg"
+        className={`fixed inset-0 w-full h-full bg-cover bg-center z-0 __bg ${
+          bgLoaded ? "opacity-100" : "opacity-0"
+        }`}
         style={{
           transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)`,
-          transition: "transform 0.2s ease-out",
+          transition: "transform 0.2s ease-out, opacity 0.3s ease",
         }}
       >
         <div

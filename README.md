@@ -8,7 +8,8 @@ A responsive, animated landing page for a gaming platform with a candy-themed de
 - Dark/light mode toggle with theme persistence
 - Interactive carousel with automatic rotation
 - Scroll-triggered animations
-- Candy-themed design with subtle background animations
+- Background image design with subtle background animations
+- Preloaded background image to improve performance
 - Component-based architecture for better maintainability
 
 ## Technical Implementation
