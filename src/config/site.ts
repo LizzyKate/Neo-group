@@ -32,6 +32,7 @@ export const siteConfig = {
     support: [
       { title: "Help Center", href: "/help" },
       { title: "Contact Us", href: "/contact" },
+      { title: "Responsible Gaming", href: "/responsible-gaming" },
     ],
     company: [
       { title: "About Us", href: "/about" },

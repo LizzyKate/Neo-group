@@ -29,7 +29,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <section className="relative max-w-6xl mx-auto px-6 mb-16 overflow-hidden">
-      <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative h-[22rem] md:h-96 rounded-2xl overflow-hidden shadow-xl">
         <div
           className="flex h-full transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -73,7 +73,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
               <h1 className="text-3xl md:text-5xl font-bold mb-4 text-center relative z-10">
                 {item.title}
               </h1>
-              <p className="text-xl md:text-2xl text-center mb-6 relative z-10">
+              <p className="text-xl md:w-full w-3/4 md:text-2xl text-center mb-6 relative z-10">
                 {item.description}
               </p>
               <Link href={item.url || "#"} passHref target="_blank">
